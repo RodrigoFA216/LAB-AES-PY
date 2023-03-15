@@ -18,3 +18,9 @@ pixels = img_y_cb_cr.flatten()
 # Mostramos los valores de los píxeles en la terminal
 for i in range(10):   # muestra solo los primeros 10 píxeles para simplificar la salida en la terminal
     print('Pixel', i+1, ':', pixels[i])
+
+
+# import cv2
+# img = cv2.imread("imagen.jpg") # lee la imagen en BGR
+# ycbcr = cv2.cvtColor(img, cv2.COLOR_BGR2YCR_CB) # convierte la imagen a YCbCr
+# cv2.imwrite("imagen_ycbcr.jpg", ycbcr) # guarda la imagen en YCbCr

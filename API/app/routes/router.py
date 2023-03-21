@@ -47,7 +47,17 @@ def create_machine(data: ItemScheme):
                     }
                 }
             else:
-                return 'ok'  # <----------
+                return {
+                    "Estado": "Necesita recálculo",
+                    "Value": res['values'],
+                    "Data": {
+                        "X1": data.x1,
+                        "X2": data.x2,
+                        "W1": data.w1,
+                        "W2": data.w2,
+                        "Th": data.th
+                    }
+                }  # <----------
         except:
             return {
                 "Estado": "Algo fue mal, el servicio no está disponible",

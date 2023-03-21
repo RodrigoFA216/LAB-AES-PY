@@ -22,7 +22,6 @@ def neuron_activ(w1, w2, x1, x2, theta, gate):
             results.append(1)
         else:
             results.append(-1)
-    print(results)
     res = compare_lists(expected, results)
     if res:
         return {"result": True, "values": results}

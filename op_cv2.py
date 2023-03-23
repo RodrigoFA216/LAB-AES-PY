@@ -16,7 +16,7 @@ carpeta_img = ruta_actual+"\Img\ "
 carpeta_cif = ruta_actual+"\ImgCif\ "
 carpeta_save = ruta_actual+"\ImgYCbCr\ "
 # >Seleccionar la imagen conformae a la carpeta IMG
-img_pull = carpeta_img[:-1]+'1.bmp'
+img_pull = carpeta_img[:-1]+'2.bmp'
 # >Lee la imagen y la reescala a 480x640
 img = cv2.imread(img_pull, cv2.IMREAD_COLOR)
 img = cv2.resize(img, (640, 480), interpolation=cv2.INTER_AREA)
@@ -31,14 +31,16 @@ img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
 # separo las componentes Y, Cb y Cr en diferentes variables
 y, cb, cr = cv2.split(img_yuv)
 # >Muestra la imagen sin la información de Cb y Cr
-cv2.imwrite(carpeta_save[:-1]+"\componente-y.jpg", y)
-cv2.imwrite(carpeta_save[:-1]+"\componente-cb.jpg", cb)
-cv2.imwrite(carpeta_save[:-1]+"\componente-cr.jpg", cr)
+cv2.imwrite(carpeta_save[:-1]+"\componente-y.bmp", y)
+cv2.imwrite(carpeta_save[:-1]+"\componente-cb.bmp", cb)
+cv2.imwrite(carpeta_save[:-1]+"\componente-cr.bmp", cr)
 
 ycb = cv2.merge([y, cb, np.zeros_like(cb)])
 ycr = cv2.merge([y, np.zeros_like(cr), cr])
-cv2.imwrite(carpeta_save[:-1]+"\componente-ycb.jpg", ycb)
-cv2.imwrite(carpeta_save[:-1]+"\componente-ycr.jpg", ycr)
+cv2.imwrite(carpeta_save[:-1]+"\componente-ycb.bmp", ycb)
+cv2.imwrite(carpeta_save[:-1]+"\componente-ycr.bmp", ycr)
+
+print(" componente Y ", type(y), y)
 
 # >Obiene la info de alto y ancho
 # >Obtiene la info de color Cb

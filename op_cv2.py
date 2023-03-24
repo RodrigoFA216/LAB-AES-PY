@@ -24,6 +24,14 @@ img = cv2.resize(img, (640, 480), interpolation=cv2.INTER_AREA)
 # este paso se puede omitir para la API
 # cv2.imshow('Imagen reescalada', img)
 # cv2.waitKey(0) # ojo, esto requiere que se agreguen las lineas "cv2.waitKey(0)" y "cv2.destroyAllWindows()" al final del script
+# Guardo la informacion RGB
+b, g, r = cv2.split(img)
+r = cv2.merge([np.zeros_like(r), np.zeros_like(r), r])  # bgr
+g = cv2.merge([np.zeros_like(g), g, np.zeros_like(g)])  # bgr
+b = cv2.merge([b, np.zeros_like(b), np.zeros_like(b)])  # bgr
+cv2.imwrite(carpeta_save[:-1]+"\componente-R.bmp", r)
+cv2.imwrite(carpeta_save[:-1]+"\componente-G.bmp", g)
+cv2.imwrite(carpeta_save[:-1]+"\componente-B.bmp", b)
 # Conversión de RGB a YCBR
 img_yuv = cv2.cvtColor(img, cv2.COLOR_BGR2YCrCb)
 # >toma la info de color
@@ -40,7 +48,6 @@ ycr = cv2.merge([y, np.zeros_like(cr), cr])
 cv2.imwrite(carpeta_save[:-1]+"\componente-ycb.bmp", ycb)
 cv2.imwrite(carpeta_save[:-1]+"\componente-ycr.bmp", ycr)
 
-print(" componente Y ", type(y), y)
 
 # >Obiene la info de alto y ancho
 # >Obtiene la info de color Cb

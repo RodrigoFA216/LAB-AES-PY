@@ -59,3 +59,10 @@ cv2.imwrite(carpeta_save[:-1]+"\componente-ycr.bmp", ycr)
 # cv2.imwrite('ruta/a/la/componente-Y.jpg', y)
 # cv2.imwrite('ruta/a/la/componente-Cb.jpg', cb)
 # cv2.imwrite('ruta/a/la/componente-Cr.jpg', cr)
+
+
+# # Redimensionar la componente Cb
+# cb_resized2 = zoom(cb, (128/cb.shape[0], 128/cb.shape[1]), order=3)
+# cb_resized2 = np.uint8(cb_resized2)
+
+# cv2.imwrite(carpeta_save[:-1]+"\componente-cb-resized-2.bmp", cb_resized2)

@@ -22,6 +22,15 @@ cb_resized = cv2.resize(cb, (128, 128), interpolation=cv2.INTER_CUBIC)
 cb_resized_smooth = cv2.GaussianBlur(cb_resized, (3, 3), 0)
 # Guardar la imagen resultante
 cv2.imwrite(carpeta_save[:-1]+"\componente-cb-resized.bmp", cb_resized_smooth)
+
+# Redimensionar la componente Cr
+cr_resized = cv2.resize(cb_resized_smooth, (640, 480),
+                        interpolation=cv2.INTER_LANCZOS4)
+# Aplicar GaussianBlur
+cr_resized_smooth = cv2.GaussianBlur(cr_resized, (3, 3), 0)
+# Guardar la imagen resultante
+cv2.imwrite(carpeta_save[:-1]+"\componente-cr-resized.bmp", cr_resized_smooth)
+
 # Guardar Imágenes
 cv2.imwrite(carpeta_save[:-1]+"\componente-y.bmp", y)
 cv2.imwrite(carpeta_save[:-1]+"\componente-cb.bmp", cb)
